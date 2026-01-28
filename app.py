@@ -1,7 +1,13 @@
 import streamlit as st
 import joblib
 import re
-from nltk.tokenize import sent_tokenize
+from nltk.tokenize
+import nltk
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
+
+import sent_tokenize
 
 model = joblib.load("fake_news_model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
@@ -37,3 +43,4 @@ if st.button("Analyze"):
     st.write("Credibility Score:", score, "%")
     st.subheader("Summary")
     st.write(summary)
+
