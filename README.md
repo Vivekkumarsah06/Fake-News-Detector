@@ -26,3 +26,49 @@ concise and trustworthy summary.
 ---
 
 ## 📂 Project Structure
+Fake-News-Detector/
+│
+├── app.py
+├── fake_news_model.pkl
+├── vectorizer.pkl
+├── requirements.txt
+└── README.md
+
+
+---
+
+## ▶️ How to Run the Project Locally
+1. Download or clone this repository
+2. Install required libraries:
+
+
+pip install -r requirements.txt
+
+3. Download NLTK data:
+
+
+python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab')"
+
+4. Run the application:
+
+
+streamlit run app.py
+
+
+---
+
+## 📊 Output
+- Predicts whether the news is Fake or Real
+- Shows a credibility score (percentage)
+- Generates a concise summary of the news article
+
+---
+
+## 🎓 Use Case
+This project helps students and general users avoid the spread of
+misinformation by providing an easy-to-use fake news detection system.
+
+---
+
+## 👨‍💻 Author
+**Vivek Kumar**
