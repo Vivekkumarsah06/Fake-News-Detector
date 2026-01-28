@@ -1,14 +1,15 @@
 import streamlit as st
 import joblib
 import re
-from nltk.tokenize
 import nltk
 
+# Download required NLTK resources (for Streamlit Cloud)
 nltk.download('punkt')
 nltk.download('punkt_tab')
 
-import sent_tokenize
+from nltk.tokenize import sent_tokenize
 
+# Load trained model and vectorizer
 model = joblib.load("fake_news_model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
@@ -31,16 +32,20 @@ def summarize_text(text, max_sentences=2):
     sentences = sent_tokenize(text)
     return " ".join(sentences[:max_sentences])
 
+# ---------- Streamlit UI ----------
 st.title("📰 Fake News Detector for Students")
 
 news = st.text_area("Paste news article here")
 
 if st.button("Analyze"):
-    label, score = predict_with_credibility(news)
-    summary = summarize_text(news)
+    if news.strip() == "":
+        st.warning("Please paste a news article")
+    else:
+        label, score = predict_with_credibility(news)
+        summary = summarize_text(news)
 
-    st.write("Prediction:", label)
-    st.write("Credibility Score:", score, "%")
-    st.subheader("Summary")
-    st.write(summary)
+        st.write("Prediction:", label)
+        st.write("Credibility Score:", score, "%")
 
+        st.subheader("Summary")
+        st.write(summary)
